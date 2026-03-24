@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from exploration import load_data
 from clean import clean_data
 import os
+import pandas as pd
 import time
 
 _ner = None
@@ -71,21 +72,19 @@ def process_dataset(df, batch_size=500, output_path="data/processed.csv"):
 
 
 def main():
-    """
     df = load_data()
     df_clean = clean_data(df)
     start = time.time()
     df_processed = process_dataset(df_clean)
     print(f"Proceso completo: {time.time() - start:.1f}s")
     print("Guardado en data/processed.csv")
+
     """
-
-    import pandas as pd
-
     df = pd.read_csv("data/processed.csv")
     print(df.shape)
     print(df.columns.tolist())
     print(df["entities"].iloc[0][:200])  # primeras entidades de la primera fila
+    """
 
 
 if __name__ == "__main__":
