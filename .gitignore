@@ -1,9 +1,34 @@
-.env
-__pychace__/
+# Python
+__pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
+*.egg-info/
+
+# Entorno virtual
+venv/
+.venv/
 env/
 
+# Variables de entorno
+.env
 
+# Datos — no se commitean por tamaño
+data/processed.csv
+data/mtsamples.csv
+data/clean.csv
+
+# ChromaDB — se regenera
+data/chroma/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
