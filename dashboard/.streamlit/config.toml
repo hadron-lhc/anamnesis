@@ -1,0 +1,15 @@
+[theme]
+# Blanco puro para limpieza y orden
+backgroundColor = "#FFFFFF"
+
+# Verde profesional (Teal/Menta oscuro) para botones y elementos activos
+primaryColor = "#10B981"
+
+# Gris muy tenue para el sidebar y widgets, genera un contraste suave
+secondaryBackgroundColor = "#F3F4F6"
+
+# Gris oscuro casi negro para máxima legibilidad del texto
+textColor = "#1F2937"
+
+# Tipografía limpia y moderna
+font = "sans serif"
