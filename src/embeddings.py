@@ -7,7 +7,7 @@ DATA_PATH = Path(__file__).parent.parent / "data"
 
 
 def get_or_build_index(df):
-    client = chromadb.EphemeralClient()
+    client = chromadb.PersistentClient(path=str(DATA_PATH / "chroma"))
     collection = client.get_or_create_collection("transcriptions")
     if collection.count() == 0:
         collection.add(
