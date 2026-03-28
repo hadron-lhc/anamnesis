@@ -6,7 +6,7 @@
 
 ## 🚀 Live Demo
 
-[anamnesis.streamlit.app](https://anamnesis.streamlit.app) <!-- reemplazá con tu URL -->
+[anamnesis.streamlit.app](https://anamnesis.streamlit.app)
 
 ---
 
@@ -86,7 +86,7 @@ anamnesis/
 ## Installation
 
 ```bash
-git clone https://github.com/tu-usuario/anamnesis
+git clone https://github.com/hadron-lhc/anamnesis
 cd anamnesis
 pip install -r requirements.txt
 ```
@@ -116,5 +116,4 @@ across 40 specialties. NER was applied offline to extract biomedical entities
 ## Disclaimer
 
 This project is for **educational and research purposes only**.
-It does not constitute medical advice. Always consult a qualified
-healthcare professional for medical decisions.
+It does not constitute medical advice.

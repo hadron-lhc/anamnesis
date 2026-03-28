@@ -18,9 +18,6 @@ env/
 data/mtsamples.csv
 data/clean.csv
 
-# ChromaDB — se regenera
-data/chroma/
-
 # Jupyter
 .ipynb_checkpoints/
 
