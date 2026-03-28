@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.express as px
 import ast
 
-DATA_PATH = Path(__file__).parent.parent / "data"
+DATA_PATH = Path(__file__).parent.parent.parent / "data"
 
 
 st.set_page_config(

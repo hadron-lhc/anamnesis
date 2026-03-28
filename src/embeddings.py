@@ -7,11 +7,9 @@ DATA_PATH = Path(__file__).parent.parent / "data"
 
 
 def get_or_build_index(df):
-    # 1. Crear cliente y colección
-    client = chromadb.PersistentClient(path=str(DATA_PATH / "chroma"))
+    client = chromadb.EphemeralClient()
     collection = client.get_or_create_collection("transcriptions")
-    if collection.count() == 0:  # solo indexa si está vacío
-        # 2. Agregar documentos
+    if collection.count() == 0:
         collection.add(
             documents=df["description"].tolist(),
             ids=[str(i) for i in range(len(df))],
