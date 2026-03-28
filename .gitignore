@@ -15,7 +15,6 @@ env/
 .env
 
 # Datos — no se commitean por tamaño
-data/processed.csv
 data/mtsamples.csv
 data/clean.csv
 
