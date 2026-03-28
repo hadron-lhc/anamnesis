@@ -19,16 +19,17 @@ def build_prompt(question, context_docs):
         cases += f"Case {i + 1}: {doc['document']}\n"
     prompt = f"""
         You are a medical assistant analyzing clinical transcriptions.
-        Answer the question based ONLY on the following clinical cases.
-        Do not use any external knowledge. If the answer is not in the
-        cases, say "I don't have enough information".
+        Based on the following clinical cases, answer the question as best you can.
+        Extract and summarize relevant information from the cases provided.
+        If the cases contain partial information, use it to give the best possible answer.
 
-        Clinical cases: {cases}
+        Clinical cases:
+        {cases}
 
         Question: {question}
 
-        Answer:
-    """
+        Answer based on the cases above:
+        """
     return prompt
 
 
