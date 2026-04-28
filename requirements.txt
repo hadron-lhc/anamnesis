@@ -9,4 +9,3 @@ huggingface-hub>=0.24.0
 python-dotenv>=1.0.0
 streamlit-extras>=0.4.0
 protobuf==4.25.3
-chromadb==0.4.24
