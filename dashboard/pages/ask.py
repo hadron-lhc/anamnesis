@@ -1,12 +1,14 @@
 import streamlit as st
 import pandas as pd
 from pathlib import Path
-from embeddings import get_or_build_index
-from rag import ask
 import sys
-from custom import apply_custom_styles
 
 sys.path.append(str(Path(__file__).parent.parent.parent / "src"))
+
+from embeddings import get_or_build_index
+from rag import ask
+from custom import apply_custom_styles
+
 
 DATA_PATH = Path(__file__).parent.parent.parent / "data"
 
