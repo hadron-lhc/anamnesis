@@ -1,6 +1,5 @@
 from sentence_transformers import SentenceTransformer
 from pathlib import Path
-import pandas as pd
 import numpy as np
 
 DATA_PATH = Path(__file__).parent.parent / "data"
@@ -10,17 +9,23 @@ _model = None
 def get_model():
     global _model
     if _model is None:
-        _model = SentenceTransformer("all-MiniLM-L6-v2")
+        _model = SentenceTransformer("paraphrase-MiniLM-L3-v2")
     return _model
 
 
-def get_or_build_index(df):
-    model = get_model()
-    documents = df["description"].tolist()
-    embeddings = model.encode(documents, show_progress_bar=False)
+def get_or_build_index(df, model=None):
+    embeddings_path = DATA_PATH / "embeddings.npy"
+
+    if embeddings_path.exists():
+        embeddings = np.load(embeddings_path)
+    else:
+        if model is None:
+            model = get_model()
+        embeddings = model.encode(df["description"].tolist(), show_progress_bar=False)
+
     return {
         "embeddings": embeddings,
-        "documents": documents,
+        "documents": df["description"].tolist(),
         "metadatas": [
             {
                 "specialty": row["medical_specialty"].strip(),
@@ -38,8 +43,7 @@ def search(collection, query, n=5, specialty=None):
 
     embeddings = collection["embeddings"]
 
-    # Filtrar por especialidad si se especifica
-    indices = range(len(embeddings))
+    indices = list(range(len(embeddings)))
     if specialty:
         indices = [
             i for i in indices if collection["metadatas"][i]["specialty"] == specialty
@@ -48,7 +52,6 @@ def search(collection, query, n=5, specialty=None):
     if not indices:
         return []
 
-    # Cosine similarity
     subset = embeddings[list(indices)]
     norms = np.linalg.norm(subset, axis=1, keepdims=True)
     subset_norm = subset / np.clip(norms, 1e-10, None)
